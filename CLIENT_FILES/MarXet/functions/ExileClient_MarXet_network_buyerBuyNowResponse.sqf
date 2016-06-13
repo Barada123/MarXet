@@ -29,6 +29,7 @@ if !(_vehicleNetID isEqualTo "") then
 }
 else
 {
+    // Thx to Exile for code logic
     switch (_location) do
 	{
 		case 0:

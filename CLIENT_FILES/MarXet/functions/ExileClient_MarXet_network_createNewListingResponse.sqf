@@ -15,6 +15,7 @@ MarXet_Hint_ItemName = "";
 MarXet_Hint_Poptabs = "";
 if !(_vehicleCheck) then
 {
+    // Thx to Exile for logic
     switch (_location) do
     {
         case 0:
