@@ -29,15 +29,12 @@ try {
     };
     _price = parseNumber(_stock select 3);
     _sellersUID = _stock select 4;
+    _buyerUID = getPlayerUID _playerObject;
     _playerMoney = _playerObject getVariable ["ExileMoney",0];
     if (_playerMoney < _price) then
     {
         throw "You don't have enough money to purchase the item";
     };
-    _newMoney = _playerMoney - _price;
-    _playerObject setVariable ["ExileMoney",_newMoney];
-    _buyerUID = getPlayerUID _playerObject;
-    format["setAccountMoney:%1:%2",_newMoney,_buyerUID] call ExileServer_system_database_query_fireAndForget;
     if (count(_stock select 2) > 1) then
     {
         _listingArray = _stock select 2;
@@ -75,21 +72,31 @@ try {
         _vehicleObject = netID _vehicleObject;
     };
     _listingID call ExileServer_MarXet_inventory_updateStock;
-    [_sessionID,"buyerBuyNowResponse",[_stock,str(_newMoney),_location,_vehicleObject]] call ExileServer_system_network_send_to;
-    _sellerPlayerObject = _sellersUID call ExileServer_MarXet_system_getPlayerObject;
-    if (_sellerPlayerObject isEqualTo "") then
+    if (_buyerUID isEqualTo _sellersUID) then
     {
-        _sellersMoney = format["getAccountMoney:%1", _sellersUID] call ExileServer_system_database_query_selectSingleField;
-        _newSellerMoney = _sellersMoney + _price;
-        format["setAccountMoney:%1:%2",_newSellerMoney, _sellersUID] call ExileServer_system_database_query_fireAndForget;
+        [_sessionID,"buyerBuyNowResponse",[_stock,str(_playerMoney),_location,_vehicleObject]] call ExileServer_system_network_send_to;
     }
     else
     {
-        _sellersMoney = _sellerPlayerObject getVariable ["ExileMoney",0];
-        _newSellerMoney = _sellersMoney + _price;
-        _sellerPlayerObject setVariable ["ExileMoney", _newSellerMoney];
-        format["setAccountMoney:%1:%2",_newSellerMoney, _sellersUID] call ExileServer_system_database_query_fireAndForget;
-        [_sessionID,"sellerBuyNowResponse",[_stock,str(_newSellerMoney)]] call ExileServer_system_network_send_to;
+        _newMoney = _playerMoney - _price;
+        _playerObject setVariable ["ExileMoney",_newMoney];
+        format["setAccountMoney:%1:%2",_newMoney,_buyerUID] call ExileServer_system_database_query_fireAndForget;
+        [_sessionID,"buyerBuyNowResponse",[_stock,str(_newMoney),_location,_vehicleObject]] call ExileServer_system_network_send_to;
+        _sellerPlayerObject = _sellersUID call ExileServer_MarXet_system_getPlayerObject;
+        if (_sellerPlayerObject isEqualTo "") then
+        {
+            _sellersMoney = format["getAccountMoney:%1", _sellersUID] call ExileServer_system_database_query_selectSingleField;
+            _newSellerMoney = _sellersMoney + _price;
+            format["setAccountMoney:%1:%2",_newSellerMoney, _sellersUID] call ExileServer_system_database_query_fireAndForget;
+        }
+        else
+        {
+            _sellersMoney = _sellerPlayerObject getVariable ["ExileMoney",0];
+            _newSellerMoney = _sellersMoney + _price;
+            _sellerPlayerObject setVariable ["ExileMoney", _newSellerMoney];
+            format["setAccountMoney:%1:%2",_newSellerMoney, _sellersUID] call ExileServer_system_database_query_fireAndForget;
+            [_sessionID,"sellerBuyNowResponse",[_stock,str(_newSellerMoney)]] call ExileServer_system_network_send_to;
+        };
     };
 }
 catch

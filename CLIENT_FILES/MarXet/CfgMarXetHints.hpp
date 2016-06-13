@@ -42,4 +42,16 @@ class MarXet
             "MarXet_Hint_Poptabs"
         };
     };
+    class VehicleBoughtSeller
+    {
+        displayName = "MarXet";
+        description = "<t size='2' align='center' valign='middle'>%3Vehicle Bought!%4</t>%1Congratulations on your purchase of your old <t color='#ff0000'>%11</t>. Couldn't let go of it huh?%1This transaction didn't cost you anything and your pincode for your vehicle is <t color='#ff0000'>%12</t>%1Thank you for choosing Mar<t color='#531517'>X</t>et: Exile's leading marketplace!";
+        image = "";
+        noImage = true;
+        tip = "";
+        arguments[] = {
+            "MarXet_Hint_ItemName",
+            "MarXet_Hint_Pincode"
+        };
+    };
 };
