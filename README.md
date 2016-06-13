@@ -1,16 +1,16 @@
 ![logo](http://puu.sh/pp1ty/864b4d13b2.jpg)
 # Welcome to MarXet!
-##### Exile's leading inmate based marketplace
+##### Exile's Leading Inmate Based Marketplace
 
-MarXet is a server/client script made for Exile to provide a unique and dynamic player based market. Players can create new "listings" for any item or persistant vehicle in game with it's own price. Other players can then purchase any item/vehicle from MarXet.
+MarXet is a server/client script made for Exile to provide a unique and dynamic player based market. Players can create new "listings" for any item or persistent vehicle in game with it's own price. Other players can then purchase any item/vehicle from MarXet.
 
 #### Features
 * Dynamic, player based marketplace
 * Built using Exile's Security
-* Sell any item or any persistant vehicles
+* Sell any item or any persistent vehicles
 * Accessible via placed MarXet Traders
 * GUI built to match Exile's GUI theme
-* Persistant, saves to the database
+* Persistent , saves to the database
 
 #### Installation
 Installation is simple and easy with only one Exile overwrite.
