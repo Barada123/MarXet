@@ -33,15 +33,15 @@ Installation is simple and easy with only one Exile overwrite.
         3. It should look something like what is below.
     2. If you don't have `class CfgHints` or `class CfgNetworkMessages`, in your `config.cpp`, add this anywhere.
 
-           class CfgHints
-           {
-                #include "MarXet\CfgMarXetHints.hpp"
-           };
-
-           class CfgNetworkMessages
-           {
-                #include "MarXet\CfgMarXetNetworkMessages.hpp"
-           };
+               class CfgHints
+               {
+                    #include "MarXet\CfgMarXetHints.hpp"
+               };
+               class CfgNetworkMessages
+               {
+                    #include "MarXet\CfgMarXetNetworkMessages.hpp"
+               };
+           
 3. In your `description.ext` add the following:
 
         #include "MarXet\dialog\RscMarXetDefines.hpp"
