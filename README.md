@@ -26,7 +26,8 @@ Installation is simple and easy with only one Exile overwrite.
 
 ##### Client
 1. Copy `MarXet` from `CLIENT_FILES` into the root of your exile.MAPNAME folder.
-2. `CfgHints.hpp` and `CfgNetworkMessages.hpp` both will depend on your set up.
+2. In either `init.sqf` or `initPlayerLocal.sqf`, add `[] execVM "MarXet\MarXet_Init.sqf`
+3. `CfgHints.hpp` and `CfgNetworkMessages.hpp` both will depend on your set up.
     1. If you **ALREADY** have `class CfgHints` or `class CfgNetworkMessages` **ANYWHERE** in your `description.ext` or `config.cpp` in your exile.MAPNAME folder:
         1. Add `#include "MarXet\CfgMarXetNetworkMessages.hpp` to `class CfgNetworkMessages`
         2. Add `#include "MarXet\CfgMarXetHints.hpp` to `class CfgHints`
@@ -42,11 +43,11 @@ Installation is simple and easy with only one Exile overwrite.
                     #include "MarXet\CfgMarXetNetworkMessages.hpp"
                };
            
-3. In your `description.ext` add the following:
+4. In your `description.ext` add the following:
 
         #include "MarXet\dialog\RscMarXetDefines.hpp"
         #include "MarXet\dialog\RscMarXetDialog.hpp"
-4. You are done! Head on down to configuration.
+5. You are done! Head on down to configuration.
 
 
 #### Configuration
