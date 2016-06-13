@@ -85,7 +85,7 @@ switch (_option) do
                             {
                                 _itemLB lbSetColor [_index, [0.8,0,0,1]];
                             };
-                            _text = format["%1,%2,%3,%4",_name,_price,_listingID,_ClassName];
+                            _text = format["%1:%2:%3:%4",_name,_price,_listingID,_ClassName];
                             _itemsLB lbSetData [_index,_text];
                         };
                     };
@@ -115,7 +115,7 @@ switch (_option) do
                             {
                                 _itemLB lbSetColor [_index, [0.8,0,0,1]];
                             };
-                            _text = format["%1,%2,%3,%4,%5",_name,_price,_listingID,_health,_fuel];
+                            _text = format["%1:%2:%3:%4:%5",_name,_price,_listingID,_health,_fuel];
                             _itemsLB lbSetData [_index,_text];
                         };
                     };
@@ -155,7 +155,7 @@ switch (_option) do
         	{
         		_items = (backpackContainer player) call ExileClient_util_containerCargo_list;
         	};
-            default
+        	default
         	{
                 private ["_nearVehicles","_name","_index","_text"];
                 _nearVehicles = nearestObjects [player, ["LandVehicle", "Air", "Ship"], 50];
@@ -169,7 +169,7 @@ switch (_option) do
                                 _name = getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName");
                                 _index = _inventoryListBox lbAdd _name;
                                 _inventoryListBox lbSetPicture [_index, getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "picture")];
-                                _text = format["%1,%2",(typeOf _x),_name];
+                                _text = format["%1:%2",(typeOf _x),_name];
                                 _inventoryListBox lbSetData [_index,_text];
                                 MarXet_VehicleObjectArray pushBack _x;
                             };
@@ -206,7 +206,7 @@ switch (_option) do
             };
             if (_canList) then
             {
-                _text = format["%1,%2",_x, _name];
+                _text = format["%1:%2",_x, _name];
                 _inventoryListBox lbSetData [_index,_text];
             }
             else
@@ -244,7 +244,7 @@ switch (_option) do
                 _dataString = lbData [21017,_this select 2];
                 if !(_dataString isEqualTo "") then
                 {
-                    _dataArray = _dataString splitString ",";
+                    _dataArray = _dataString splitString ":";
                     _purchaseBtn = _display displayCtrl 21014;
                     _purchaseBtn ctrlShow true;
                     if (_location isEqualto 1) then
@@ -340,7 +340,7 @@ switch (_option) do
                 _dataString = _leftLB lbData (_this select 2);
                 if !(_dataString isEqualTo "") then
                 {
-                    _dataArray = _dataString splitString ",";
+                    _dataArray = _dataString splitString ":";
                     _dropdown = _display displayCtrl 21019;
                     _dropdownOption = lbCurSel _dropdown;
                     _location = _dropdown lbValue _dropdownOption;
@@ -365,14 +365,7 @@ switch (_option) do
                     }
                     else
                     {
-                        if (_location isEqualTo 0) then
-                        {
-                            MarXet_TempListingClassname = [_dataArray select 0];
-                        }
-                        else
-                        {
-                            MarXet_TempListingClassname = [_dataArray select 0];
-                        };
+                        MarXet_TempListingClassname = [_dataArray select 0];
                     };
                 }
                 else
