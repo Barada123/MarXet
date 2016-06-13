@@ -11,6 +11,9 @@ _traders = [];
 switch (toLower worldName) do {
 	case "altis":
     {
+		//////////////////////////////////////////////////////////
+        // 			Airport MarXet Trader
+        //////////////////////////////////////////////////////////
         _trader =
         [
             "Exile_Cutscene_Prisoner01",
@@ -20,7 +23,12 @@ switch (toLower worldName) do {
             38.0894
         ]
         call ExileClient_object_trader_create;
+
 		_traders pushBack _trader;
+
+		//////////////////////////////////////////////////////////
+        //			 West MarXet Trader
+        //////////////////////////////////////////////////////////
         _trader =
         [
             "Exile_Cutscene_Prisoner01",
@@ -30,7 +38,12 @@ switch (toLower worldName) do {
             113.04
         ]
         call ExileClient_object_trader_create;
+
 		_traders pushBack _trader;
+
+		//////////////////////////////////////////////////////////
+        // 			Northern MarXet Trader
+        ////////////////////////////////////////////////////////////
         _trader =
         [
             "Exile_Cutscene_Prisoner01",
@@ -40,10 +53,15 @@ switch (toLower worldName) do {
             332.571
         ]
         call ExileClient_object_trader_create;
+
 		_traders pushBack _trader;
+
     };
     case "namalsk":
     {
+		//////////////////////////////////////////////////////////
+        // 			Sebjan Mine MarXet Trader
+        //////////////////////////////////////////////////////////
         _trader =
         [
             "Exile_Cutscene_Prisoner01",
@@ -53,7 +71,12 @@ switch (toLower worldName) do {
             93.9074
         ]
         call ExileClient_object_trader_create;
+
 		_traders pushBack _trader;
+
+		//////////////////////////////////////////////////////////
+		// 			Northern Boat MarXet Trader
+		//////////////////////////////////////////////////////////
         _trader =
         [
             "Exile_Cutscene_Prisoner01",
@@ -63,7 +86,12 @@ switch (toLower worldName) do {
             208.937
         ]
         call ExileClient_object_trader_create;
+
 		_traders pushBack _trader;
+
+		//////////////////////////////////////////////////////////
+		// 			Southern Boat MarXet Trader
+		//////////////////////////////////////////////////////////
         _trader =
         [
             "Exile_Cutscene_Prisoner01",
@@ -73,9 +101,11 @@ switch (toLower worldName) do {
             50.5659
         ]
         call ExileClient_object_trader_create;
+
 		_traders pushBack _trader;
     };
 };
+
 {
 	_x forceAddUniform "U_BG_Guerilla2_1";
 	_x addVest "Exile_Vest_Snow";

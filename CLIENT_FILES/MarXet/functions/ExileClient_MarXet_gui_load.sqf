@@ -155,6 +155,7 @@ switch (_option) do
         	{
         		_items = (backpackContainer player) call ExileClient_util_containerCargo_list;
         	};
+            default
         	{
                 private ["_nearVehicles","_name","_index","_text"];
                 _nearVehicles = nearestObjects [player, ["LandVehicle", "Air", "Ship"], 50];
