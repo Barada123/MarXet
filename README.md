@@ -28,7 +28,7 @@ Installation is simple and easy with only one Exile overwrite.
 1. Copy `MarXet` from `CLIENT_FILES` into the root of your exile.MAPNAME folder.
 2. `CfgHints.hpp` and `CfgNetworkMessages.hpp` both will depend on your set up.
     1. If you **ALREADY** have `class CfgHints` or `class CfgNetworkMessages` **ANYWHERE** in your `description.ext` or `config.cpp` in your exile.MAPNAME folder:
-        1. Add `#include "MarXet\CfgMarXetNetworkMessage.hpp` to `class CfgNetworkMessages`
+        1. Add `#include "MarXet\CfgMarXetNetworkMessages.hpp` to `class CfgNetworkMessages`
         2. Add `#include "MarXet\CfgMarXetHints.hpp` to `class CfgHints`
         3. It should look something like what is below.
     2. If you don't have `class CfgHints` or `class CfgNetworkMessages`, in your `config.cpp`, add this anywhere.
