@@ -6,7 +6,7 @@
 *  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 *  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
 */
-private["_sessionID","_package","_listingID","_location","_vehicleObject","_playerObject","_stock","_price","_sellersUID","_playerMoney","_newMoney","_buyerUID","_listingArray","_vehicleClass","_pinCode","_position","_hitpoints","_sellerPlayerObject","_sellersMoney","_newSellerMoney"];
+private["_sessionID","_package","_listingID","_location","_vehicleObject","_playerObject","_stock","_price","_sellersUID","_buyerUID","_playerMoney","_listingArray","_vehicleClass","_pinCode","_position","_hitpoints","_newMoney","_sellerPlayerObject","_sellersMoney","_newSellerMoney","_sellerSessionID"];
 _sessionID = _this select 0;
 _package = _this select 1;
 _listingID = _package select 0;
@@ -94,8 +94,12 @@ try {
             _sellersMoney = _sellerPlayerObject getVariable ["ExileMoney",0];
             _newSellerMoney = _sellersMoney + _price;
             _sellerPlayerObject setVariable ["ExileMoney", _newSellerMoney];
+            _sellerSessionID = _sellerPlayerObject getVariable ["ExileSessionID",-1];
             format["setAccountMoney:%1:%2",_newSellerMoney, _sellersUID] call ExileServer_system_database_query_fireAndForget;
-            [_sessionID,"sellerBuyNowResponse",[_stock,str(_newSellerMoney)]] call ExileServer_system_network_send_to;
+            if !(_sellerSessionID isEqualTo -1) then
+            {
+                [_sellerSessionID,"sellerBuyNowResponse",[_stock,str(_newSellerMoney)]] call ExileServer_system_network_send_to;
+            };
         };
     };
 }
