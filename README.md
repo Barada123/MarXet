@@ -18,6 +18,7 @@ Installation is simple and easy with only one Exile overwrite.
 #### extDB
 1. Copy `MarXet-SQL.sql` into your favorite mySQL viewer's query window and run it.
 2. Confirm you have a `marxet` table.
+3. Copy the contents of `MarXet-extDB.ini` into your `@ExileServer\extDB\sql_custom_v2\exile.ini` file at the bottom.
 
 ##### Server
 1. Copy `ExileServer_system_network_dispatchIncomingMessage.sqf` from `MarXet\SERVER_FILES\exile_server\code` into your `exile_server/code` folder and replace the existing one.
@@ -42,7 +43,7 @@ Installation is simple and easy with only one Exile overwrite.
                {
                     #include "MarXet\CfgMarXetNetworkMessages.hpp"
                };
-           
+
 4. In your `description.ext` add the following:
 
         #include "MarXet\dialog\RscMarXetDefines.hpp"
