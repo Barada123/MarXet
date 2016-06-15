@@ -56,6 +56,24 @@ switch (toLower worldName) do {
 
 		_traders pushBack _trader;
 
+		private ["_signs"];
+		_signs = [
+			["Exile_Sign_Armory",[14577.6,16755.7,0],225.798,[[-0.716886,-0.69719,0],[-0,0,1]],false],
+			["Exile_Sign_Armory",[2986.82,18151.3,0.237748],294.574,[[-0.909421,0.415876,0],[0,0,1]],false],
+			["Exile_Sign_Armory",[23334.3,24201.4,-0.221748],181.915,[[-0.0334147,-0.999442,0],[-0,0,1]],false]
+		];
+
+		{
+			private ["_sign"];
+			if (_x select 4) then {
+				_sign setDir (_x select 2);
+				_sign setPos (_x select 1);
+			} else {
+				_sign setPosATL (_x select 1);
+				_sign setVectorDirAndUp (_x select 3);
+			};
+		} foreach _signs;
+
     };
     case "namalsk":
     {
@@ -103,6 +121,27 @@ switch (toLower worldName) do {
         call ExileClient_object_trader_create;
 
 		_traders pushBack _trader;
+
+		private ["_signs"];
+		_signs = [
+			["Exile_Sign_Armory",[5017.71,8022.81,0],142.021,[[0.615369,-0.788239,0],[0,-0,1]],false],
+			["Exile_Sign_Armory",[9113.17,10095.6,0.15098],83.7766,[[0.994107,0.108405,0],[0,0,1]],false],
+			["Exile_Sign_Armory",[4353.01,4742.62,0],226.596,[[-0.726524,-0.687141,0],[-0,0,1]],false]
+		];
+
+		{
+			private ["_sign"];
+			_sign enableSimulationGlobal false;
+			_sign setObjectTextureGlobal [0, "MarXet\images\MarXet_Sign.jpg"];
+			if (_x select 4) then {
+				_sign setDir (_x select 2);
+				_sign setPos (_x select 1);
+			} else {
+				_sign setPosATL (_x select 1);
+				_sign setVectorDirAndUp (_x select 3);
+			};
+		} foreach _signs;
+
     };
 };
 
