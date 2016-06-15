@@ -21,7 +21,7 @@ Installation is simple and easy with only one Exile overwrite.
 3. Copy the contents of `MarXet-extDB.ini` into your `@ExileServer\extDB\sql_custom_v2\exile.ini` file at the bottom.
 
 ##### Server
-1. Copy `ExileServer_system_network_dispatchIncomingMessage.sqf` from `MarXet\SERVER_FILES\exile_server\code` into your `exile_server/code` folder and replace the existing one.
+1. Copy `ExileServer_system_network_dispatchIncomingMessage.sqf` from `MarXet\SERVER_FILES\exile_server\code` into your `@ExileServer\addons\exile_server\code` folder and replace the existing one.
     1. This allows MarXet to send network messages to the server. If you run Advanced Banking, Virtual Garage or Most Wanted, you won't need to copy this file over as you already have it. :)
 2. PBO `MarXet_Server` in `SERVER_FILES` and copy that to your `@ExileServer\addons` folder.
 
